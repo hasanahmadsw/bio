@@ -5,6 +5,7 @@ const serviceSchema = new Schema<IService>({
   slug: {
     type: String,
     required: true,
+    unique: true,
   },
   title: {
     type: String,

@@ -22,6 +22,8 @@ export async function findServices() {
 export async function updateService(id: string, data: Partial<CreateService>) {
   const isExist = await ServiceRepository.findOneById(id);
   if (!isExist) throw new Exception(errorCodes.NOT_FOUND);
+  const isSlugExist = await ServiceRepository.findOneBySlug(data.slug);
+  if (isSlugExist) throw new Exception(errorCodes.SLUG_NOT_AVAILABLE);
   return await ServiceRepository.updateOne(id, data);
 }
 
