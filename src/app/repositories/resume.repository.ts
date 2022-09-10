@@ -9,7 +9,7 @@ import {
 import Resume from "../models/resume.model";
 
 class ResumeRepository implements IResumeRepo {
-  async insert(data: CreateResume): Promise<IResume> {
+  async insert(data: IResume): Promise<IResume> {
     await Resume.create(data);
     return await Resume.findOne();
   }

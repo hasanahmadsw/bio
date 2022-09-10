@@ -4,6 +4,7 @@ import {
   ICertificate,
   IEducation,
   IExperience,
+  IResume,
 } from "../../interfaces/schema/resume.schema";
 import * as ResumeService from "../services/resume.service";
 
@@ -13,7 +14,7 @@ export async function createResume(
   next: NextFunction
 ) {
   try {
-    const data: CreateResume = req.body;
+    const data: IResume = req.body;
     const resume = await ResumeService.createResume(data);
     res.status(201).json({ response: resume });
   } catch (err) {

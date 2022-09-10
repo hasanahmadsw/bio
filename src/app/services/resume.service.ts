@@ -3,12 +3,13 @@ import {
   ICertificate,
   IEducation,
   IExperience,
+  IResume,
 } from "../../interfaces/schema/resume.schema";
 import errorCodes from "../../utils/constants/errorCodes";
 import Exception from "../../utils/exception";
 import ResumeRepository from "../repositories/resume.repository";
 
-export async function createResume(data: CreateResume) {
+export async function createResume(data: IResume) {
   const isExist = await ResumeRepository.find();
   if (isExist) throw new Exception(errorCodes.RESUME_ALREADY_EXISTS);
   return await ResumeRepository.insert(data);
