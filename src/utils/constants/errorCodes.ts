@@ -33,4 +33,8 @@ export default {
     message: "Admin Already Created!",
     httpStatus: httpStatus.CONFLICT,
   },
+  SERVICES_EXISTS: {
+    message: "Services Already Created!",
+    httpStatus: httpStatus.CONFLICT,
+  },
 };

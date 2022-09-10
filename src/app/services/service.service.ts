@@ -9,6 +9,12 @@ export async function createService(data: CreateService) {
   return await ServiceRepository.insertOne(data);
 }
 
+export async function createServices(data: CreateService[]) {
+  const isExists = await ServiceRepository.findAll();
+  if (isExists.length > 0) throw new Exception(errorCodes.SERVICES_EXISTS);
+  return await ServiceRepository.insertMany(data);
+}
+
 export async function findServiceBySlug(slug: string) {
   const service = await ServiceRepository.findOneBySlug(slug);
   if (!service) throw new Exception(errorCodes.NOT_FOUND);

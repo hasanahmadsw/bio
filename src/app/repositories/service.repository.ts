@@ -10,6 +10,10 @@ class ServiceRepository implements IServiceRepo {
     const insert = await Service.create(data);
     return await Service.findById(insert._id);
   }
+  async insertMany(data: CreateService[]): Promise<IService[]> {
+    await Service.insertMany(data);
+    return await Service.find();
+  }
   async findOneBySlug(slug: string): Promise<IService> {
     return await Service.findOne({ slug: slug });
   }
