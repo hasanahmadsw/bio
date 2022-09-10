@@ -9,6 +9,7 @@ import {
 const experienceSchema = new Schema<IExperience>({
   title: { type: String, required: true },
   company: { type: String, required: true },
+  location: { type: String, required: true },
   breif: { type: String, required: true },
   date: { type: String, required: true },
 });
